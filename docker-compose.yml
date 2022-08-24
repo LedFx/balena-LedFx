@@ -2,6 +2,7 @@ version: '2'
 
 volumes:
   spotifycache:
+  ledfx:
 
 services:
 
@@ -36,6 +37,14 @@ services:
   multiroom-client:
     build: ./core/multiroom/client
     restart: on-failure
+
+  ledfx:
+    image: ghcr.io/spiro-c/ledfx_v3:latest
+    container_name: ledfx
+    restart: on-failure
+    network_mode: host
+    volumes:
+      - ledfx:/root/.ledfx
 
   # Plugins
   # -- Additional plugins can be added. See https://sound.balenalabs.io/docs/plugins.
